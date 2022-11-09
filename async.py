@@ -41,6 +41,15 @@ async def get_people(session, people_id):
         result = await session.get(f'https://swapi.dev/api/people/{people_id}')
         return await result.json()
 
+def spisok(l):
+    if len(l) > 0:
+        res = ""
+        for i in l:
+            res += ", " + requests.get(i).json().get("name")
+        return res[2:]
+    else:
+        return "None"
+
 async def insert_people(async_session_maker, people):
     people_list = [People(json_t=item) for item in people]
     people_list_di = []
@@ -49,17 +58,17 @@ async def insert_people(async_session_maker, people):
             people_list_di.append(People_disc(
                         birth_year=i.get("birth_year"),
                         eye_color=i.get("eye_color"),
-                        films=str(i.get("films")),
+                        films=spisok(i.get("films")),
                         gender=i.get("gender"),
                         hair_color=i.get("hair_color"),
-                        height=str(i.get("height")),
+                        height=spisok(i.get("height")),
                         homeworld=i.get("homeworld"),
                         mass=i.get("mass"),
                         name=i.get("name"),
                         skin_color=i.get("skin_color"),
-                        species=str(i.get("species")),
-                        starships=str(i.get("starships")),
-                        vehicles =str(i.get("vehicles")),
+                        species=spisok(i.get("species")),
+                        starships=spisok(i.get("starships")),
+                        vehicles =spisok(i.get("vehicles")),
                         ))
     async with async_session_maker() as orm_session:
         orm_session.add_all(people_list_di)
