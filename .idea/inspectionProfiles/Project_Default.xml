@@ -1,0 +1,18 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="psycopg2" />
+          <option value="psyc" />
+          <option value="psy" />
+          <option value="psycop" />
+          <option value="psycopg" />
+          <option value="django_filters.rest_framework.DjangoFilterBackend" />
+          <option value="django_filters.rest_framework.*" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
